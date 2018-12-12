@@ -22,12 +22,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        btnPlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), GameActivity.class);
-                startActivity(intent);
-            }
+        btnPlay.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+            startActivity(intent);
         });
     }
 }
