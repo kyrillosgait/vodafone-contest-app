@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import gr.competition.vodafone.vodafonecontestapp.R
 
-const val TOTAL_TRIES: String = "TOTAL_TRIES"
-
 class GameActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,6 +11,6 @@ class GameActivity : AppCompatActivity() {
         setContentView(R.layout.activity_game)
     }
 
-
-
 }
+
+
