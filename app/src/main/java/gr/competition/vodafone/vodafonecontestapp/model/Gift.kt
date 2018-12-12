@@ -1,7 +1,11 @@
 package gr.competition.vodafone.vodafonecontestapp.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 data class Gift(
-        val id: Int,
+        @PrimaryKey(autoGenerate = true) val id: Int,
         val category: String,
         val name: String,
         val value: Int,
