@@ -10,6 +10,7 @@ import gr.competition.vodafone.vodafonecontestapp.db.AppDatabase
 import gr.competition.vodafone.vodafonecontestapp.db.GiftDao
 import gr.competition.vodafone.vodafonecontestapp.model.Box
 import kotlinx.android.synthetic.main.activity_game.*
+import org.jetbrains.anko.startActivity
 
 class GameActivity : AppCompatActivity() {
 
@@ -108,9 +109,7 @@ class GameActivity : AppCompatActivity() {
                 if (boxName.isNotEmpty()) {
                     odigiesTextView.text = "$youWon $boxName"
                     youWonButton.visibility = View.VISIBLE
-//                    startActivity<HistoryActivity>("id" to 5, "name" to "Denpasar")
-//                    startActivity<HistoryActivity>("id" to 5)
-
+                    startActivity<HistoryActivity>("GIFT_NAME" to boxName)
                 } else {
                     odigiesTextView.text = youLost
                 }
