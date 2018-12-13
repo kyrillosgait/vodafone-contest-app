@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnPlay;
     @BindView(R.id.btn_history)
     Button btnHistory;
+    @BindView(R.id.btn_about)
+    Button btnAbout;
     @BindView(R.id.btn_rewards)
     Button btnRewards;
     private AppDatabase db;
@@ -37,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
         btnHistory.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), HistoryActivity.class);
+            startActivity(intent);
+        });
+
+        btnAbout.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(),AboutActivity.class);
             startActivity(intent);
         });
 
