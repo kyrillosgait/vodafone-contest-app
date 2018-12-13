@@ -52,11 +52,13 @@ dependencies {
     implementation "androidx.room:room-runtime:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
 
-    //RecyclerView
+    // RecyclerView
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
-    //CardView
+    // CardView
     implementation 'androidx.cardview:cardview:1.0.0'
 
+    // Anko
+    implementation "org.jetbrains.anko:anko-commons:$ankoVersion"
 
 }

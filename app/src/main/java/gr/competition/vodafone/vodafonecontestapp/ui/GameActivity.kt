@@ -2,6 +2,8 @@ package gr.competition.vodafone.vodafonecontestapp.ui
 
 import android.graphics.Paint
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import gr.competition.vodafone.vodafonecontestapp.R
 import gr.competition.vodafone.vodafonecontestapp.db.AppDatabase
@@ -9,13 +11,15 @@ import gr.competition.vodafone.vodafonecontestapp.db.GiftDao
 import gr.competition.vodafone.vodafonecontestapp.model.Box
 import kotlinx.android.synthetic.main.activity_game.*
 
-
 class GameActivity : AppCompatActivity() {
 
     private var selectedBox: Int = 0
     private lateinit var giftDao: GiftDao
     private var boxes = mutableSetOf(1, 2, 3, 4, 5, 6)
     private var boxesList = mutableListOf<Box>()
+    private val youWon = "Κέρδισες"
+    private var boxName = ""
+    private var youLost = "Λυπάμαι αλλά δεν ήσουν τυχερός αυτή τη φορά"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +52,7 @@ class GameActivity : AppCompatActivity() {
             val randomBox = boxesSet.random()
             for (box in boxesList) {
                 if (box.id == randomBox) {
+                    box.categoryId = i
                     box.name = giftDao.selectRandomGiftFromCategory(i)
                     changeTextViewNameToGift(i, box.name)
                 }
@@ -80,7 +85,9 @@ class GameActivity : AppCompatActivity() {
 
         } else {
 
-            if (boxes.isNotEmpty()) {
+            Log.d("BOXES", "BOXES" + boxes.toString())
+
+            if (boxes.size > 1) {
 
                 for (box in boxesList) {
                     if (box.id == boxNumber) {
@@ -88,9 +95,28 @@ class GameActivity : AppCompatActivity() {
                         disableBox(boxNumber)
                     }
                 }
+
             } else {
 
+                for (box in boxesList) {
+                    if (box.id == selectedBox) {
+                        boxName = box.name
+                        disableBox(boxNumber)
+                    }
+                }
+
+                if (boxName.isNotEmpty()) {
+                    odigiesTextView.text = "$youWon $boxName"
+                    youWonButton.visibility = View.VISIBLE
+//                    startActivity<HistoryActivity>("id" to 5, "name" to "Denpasar")
+//                    startActivity<HistoryActivity>("id" to 5)
+
+                } else {
+                    odigiesTextView.text = youLost
+                }
             }
+
+            boxes.remove(boxNumber)
         }
     }
 
@@ -101,7 +127,6 @@ class GameActivity : AppCompatActivity() {
             thirdRewardTextView.text -> thirdRewardTextView.paintFlags = thirdRewardTextView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             fourthRewardTextView.text -> fourthRewardTextView.paintFlags = fourthRewardTextView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
         }
-
     }
 
     private fun changeBoxNumberTitleToQuestionMark(box: Int) {
@@ -125,7 +150,6 @@ class GameActivity : AppCompatActivity() {
             6 -> sixthBox.isEnabled = false
         }
     }
-
 
 }
 
