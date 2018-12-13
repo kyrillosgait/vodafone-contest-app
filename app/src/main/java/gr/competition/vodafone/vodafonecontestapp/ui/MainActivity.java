@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnPlay;
     @BindView(R.id.btn_history)
     Button btnHistory;
+    @BindView(R.id.btn_rewards)
+    Button btnRewards;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,11 @@ public class MainActivity extends AppCompatActivity {
 
         btnHistory.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), HistoryActivity.class);
+            startActivity(intent);
+        });
+
+        btnRewards.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), RewardsActivity.class);
             startActivity(intent);
         });
     }
