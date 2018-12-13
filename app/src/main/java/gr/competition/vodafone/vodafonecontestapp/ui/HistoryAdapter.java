@@ -92,7 +92,9 @@ public class HistoryAdapter extends ListAdapter<Reward, HistoryAdapter.RewardsVi
         }
 
         private void setBackgroundColor(int position) {
-            if (position % 2 == 1) mItem.setBackgroundColor(res.getColor(R.color.colorSwitchBg));
+            if (position % 2 == 1)
+                mItem.setBackgroundColor(res.getColor(R.color.colorSwitchAlmostTransparent));
+            else mItem.setBackgroundColor(res.getColor(R.color.colorSwitchTransparent));
         }
 
     }

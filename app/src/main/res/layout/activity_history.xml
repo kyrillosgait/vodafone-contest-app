@@ -7,24 +7,32 @@
     android:background="@color/colorPrimaryDark"
     tools:context=".ui.HistoryActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg"
+        android:scaleType="centerCrop"
+        android:scaleX="1.2"
+        android:scaleY="1.2" />
+
     <TextView
         android:id="@+id/tv_label_history"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:gravity="center"
         android:text="@string/title_activity_history"
-        android:background="@android:color/white"
+        android:background="@android:color/transparent"
         android:elevation="8dp"
         android:paddingTop="16dp"
-        android:paddingBottom="16dp"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
-        android:textColor="@color/colorPrimaryDark" />
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+        android:textColor="@android:color/white" />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_history"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_label_history"
         tools:listitem="@layout/item_reward" />
