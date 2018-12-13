@@ -79,6 +79,8 @@ class GameActivity : AppCompatActivity() {
 
         } else {
 
+            odigiesTextView.text = "Πάτα στα κουτιά για να αποκαλύψεις τα δώρα που κρύβουν"
+
             for (box in boxesList) {
 
                 if (box.id == boxNumber) {
