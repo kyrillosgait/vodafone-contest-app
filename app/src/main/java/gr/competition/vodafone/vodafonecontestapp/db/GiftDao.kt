@@ -10,7 +10,7 @@ import gr.competition.vodafone.vodafonecontestapp.model.Gift
 interface GiftDao {
 
     @Query("SELECT name FROM Gift WHERE category = :categoryId ORDER BY RANDOM() LIMIT 1")
-    fun selectRandoGiftFromCategory(categoryId: Int): String
+    fun selectRandomGiftFromCategory(categoryId: Int): String
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertGifts(gifts: List<Gift>)

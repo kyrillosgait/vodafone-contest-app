@@ -46,7 +46,7 @@ class GameActivity : AppCompatActivity() {
             val randomBox = boxesSet.random()
             for (box in boxesList) {
                 if (box.id == randomBox) {
-                    box.name = giftDao.selectRandoGiftFromCategory(i)
+                    box.name = giftDao.selectRandomGiftFromCategory(i)
                 }
             }
             boxesSet.remove(randomBox)

@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Gift(
-        @PrimaryKey val id: Int,
+        @PrimaryKey(autoGenerate = true) val giftId: Int,
         val category: String,
         val categoryId: Int,
         val name: String,
