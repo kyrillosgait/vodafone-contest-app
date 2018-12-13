@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/gameCoordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,15 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg"
-            android:scaleType="centerCrop"
-            android:scaleX="1.2"
-            android:scaleY="1.2" />
+        android:background="@drawable/bg"
+        tools:background="@color/colorPrimaryDark">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -43,9 +37,9 @@
             android:id="@+id/firstRewardTextView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:drawableStart="@drawable/ic_ticket"
             android:drawablePadding="8dp"
             android:drawableTint="@android:color/white"
@@ -59,9 +53,9 @@
             android:id="@+id/secondRewardTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:drawableStart="@drawable/ic_food"
             android:drawablePadding="8dp"
             android:drawableTint="@android:color/white"
@@ -75,9 +69,9 @@
             android:id="@+id/thirdRewardTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:drawableStart="@drawable/ic_sale"
             android:drawablePadding="8dp"
             android:drawableTint="@android:color/white"
@@ -91,9 +85,9 @@
             android:id="@+id/fourthRewardTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:drawableStart="@drawable/ic_cloud"
             android:drawablePadding="8dp"
             android:drawableTint="@android:color/white"
@@ -105,8 +99,8 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/firstBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="96dp"
+            android:layout_height="64dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:text="1"
@@ -115,8 +109,8 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/secondBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="96dp"
+            android:layout_height="64dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:text="2"
@@ -125,8 +119,8 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/thirdBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="96dp"
+            android:layout_height="64dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:text="3"
@@ -135,8 +129,8 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/fourthBox"
-            android:layout_width="88dp"
-            android:layout_height="wrap_content"
+            android:layout_width="96dp"
+            android:layout_height="64dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:text="4"
@@ -145,8 +139,8 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/fifthBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="96dp"
+            android:layout_height="64dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:text="5"
@@ -155,8 +149,8 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/sixthBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="96dp"
+            android:layout_height="64dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:text="6"
@@ -170,6 +164,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="48dp"
             android:layout_marginEnd="8dp"
+            android:gravity="center"
             android:text="Διάλεξε το τυχερό κουτί"
             android:textColor="@android:color/white"
             android:textSize="20sp"
