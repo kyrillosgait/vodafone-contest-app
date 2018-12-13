@@ -36,6 +36,7 @@ class GameActivity : AppCompatActivity() {
         fourthBox.setOnClickListener { onBoxClicked(4) }
         fifthBox.setOnClickListener { onBoxClicked(5) }
         sixthBox.setOnClickListener { onBoxClicked(6) }
+        youWonButton.setOnClickListener { startActivity<HistoryActivity>("GIFT_NAME" to boxName) }
     }
 
     private fun selectRandomGifts() {
@@ -109,7 +110,6 @@ class GameActivity : AppCompatActivity() {
                 if (boxName.isNotEmpty()) {
                     odigiesTextView.text = "$youWon $boxName"
                     youWonButton.visibility = View.VISIBLE
-                    startActivity<HistoryActivity>("GIFT_NAME" to boxName)
                 } else {
                     odigiesTextView.text = youLost
                 }
