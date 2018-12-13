@@ -19,7 +19,6 @@ android {
         targetCompatibility 1.8
     }
 
-
     buildTypes {
         release {
             minifyEnabled false
