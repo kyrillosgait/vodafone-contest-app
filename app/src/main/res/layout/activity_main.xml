@@ -6,38 +6,39 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
+    <Button
+        android:id="@+id/btn_play"
+        android:layout_width="180dp"
+        android:layout_height="90dp"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="ΝΕΟ ΠΑΙΧΝΙΔΙ!"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        app:layout_constraintBottom_toTopOf="@id/ll_recharge_layout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <Button
         android:id="@+id/btn_history"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:text="Τα δωρα μου"
-        app:layout_constraintBottom_toTopOf="@id/btn_play"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <Button
-        android:id="@+id/btn_play"
-        android:layout_width="120dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="παιξε"
-        app:layout_constraintBottom_toTopOf="@id/btn_rewards"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_history" />
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="Τα δωρα μου"
+        app:layout_constraintBottom_toTopOf="@id/ll_recharge_layout"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
         android:id="@+id/btn_rewards"
-        android:layout_width="120dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Τι κερδίζω"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="Τι κερδiζω?"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_play" />
+        app:layout_constraintBottom_toTopOf="@id/ll_recharge_layout" />
 
     <LinearLayout
         android:id="@+id/ll_recharge_layout"
@@ -68,18 +69,24 @@
                 android:id="@+id/btn_small_recharge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="2"
                 android:text="5€" />
 
             <Button
                 android:id="@+id/btn_medium_recharge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="2"
                 android:text="10€" />
 
             <Button
                 android:id="@+id/btn_large_recharge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="2"
                 android:text="20€" />
 
 

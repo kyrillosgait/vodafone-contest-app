@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.btn_play)
     Button btnPlay;
+    @BindView(R.id.btn_history)
+    Button btnHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,11 @@ public class MainActivity extends AppCompatActivity {
 
         btnPlay.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+            startActivity(intent);
+        });
+
+        btnHistory.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), HistoryActivity.class);
             startActivity(intent);
         });
     }
