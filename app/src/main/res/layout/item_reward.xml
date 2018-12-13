@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="8dp"
             android:text="1+1 Tickets to Village"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             android:textColor="@android:color/white"
             card_view:layout_constraintLeft_toLeftOf="@id/guideline" />
 
@@ -42,7 +42,8 @@
             android:layout_height="wrap_content"
             android:paddingBottom="8dp"
             android:text="Λήγει "
-            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionMode.Subtitle"
+            android:textColor="@color/colorRewardText"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintLeft_toLeftOf="@id/guideline"
             card_view:layout_constraintTop_toBottomOf="@id/tv_history_reward_code" />
@@ -53,8 +54,8 @@
             android:layout_height="wrap_content"
             android:paddingBottom="8dp"
             android:text="C8D4Fhsj23J"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
             card_view:layout_constraintBottom_toTopOf="@id/tv_history_date_valid"
             card_view:layout_constraintLeft_toLeftOf="@id/guideline"
             card_view:layout_constraintTop_toBottomOf="@id/tv_history_reward_title" />
