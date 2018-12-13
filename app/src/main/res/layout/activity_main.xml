@@ -2,18 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorPrimaryDark"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg"
-        android:scaleType="centerCrop"
-        android:scaleX="1.2"
-        android:scaleY="1.2" />
+    android:background="@drawable/bg"
+    tools:background="@color/colorPrimaryDark">
 
     <Button
         android:id="@+id/btn_play"
@@ -28,14 +20,13 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <Button
         android:id="@+id/btn_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="Τα δωρα μου"
         android:backgroundTint="@android:color/transparent"
+        android:text="Τα δωρα μου"
         app:layout_constraintBottom_toTopOf="@id/ll_recharge_layout"
         app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -56,8 +47,8 @@
         android:layout_margin="16dp"
         android:backgroundTint="@android:color/transparent"
         android:text="Τι κερδiζω?"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/ll_recharge_layout" />
+        app:layout_constraintBottom_toTopOf="@id/ll_recharge_layout"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <LinearLayout
         android:id="@+id/ll_recharge_layout"
@@ -109,10 +100,8 @@
                 android:layout_weight="2"
                 android:text="20€" />
 
-
         </LinearLayout>
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

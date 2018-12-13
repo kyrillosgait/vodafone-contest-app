@@ -2,7 +2,6 @@ package gr.competition.vodafone.vodafonecontestapp.ui
 
 import android.graphics.Paint
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import gr.competition.vodafone.vodafonecontestapp.R
 import gr.competition.vodafone.vodafonecontestapp.db.AppDatabase
@@ -25,6 +24,7 @@ class GameActivity : AppCompatActivity() {
 
         selectRandomGifts()
 
+        // Boxes onClickListeners
         firstBox.setOnClickListener { onBoxClicked(1) }
         secondBox.setOnClickListener { onBoxClicked(2) }
         thirdBox.setOnClickListener { onBoxClicked(3) }
@@ -66,7 +66,6 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun onBoxClicked(boxNumber: Int) {
-        Log.d("BOXES", "BOXES" + boxes.toString())
 
         if (selectedBox == 0) {
             selectedBox = boxNumber
@@ -77,16 +76,19 @@ class GameActivity : AppCompatActivity() {
                 changeBoxNumberTitleToQuestionMark(box)
             }
 
-        } else {
-
             odigiesTextView.text = "Πάτα στα κουτιά για να αποκαλύψεις τα δώρα που κρύβουν"
 
-            for (box in boxesList) {
+        } else {
 
-                if (box.id == boxNumber) {
-                    strikeThroughReward(box.name)
-                    disableBox(boxNumber)
+            if (boxes.isNotEmpty()) {
+
+                for (box in boxesList) {
+                    if (box.id == boxNumber) {
+                        strikeThroughReward(box.name)
+                        disableBox(boxNumber)
+                    }
                 }
+            } else {
 
             }
         }
