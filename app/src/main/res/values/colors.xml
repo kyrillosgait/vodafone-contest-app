@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#F44336</color>
-    <color name="colorPrimaryDark">#D32F2F</color>
+    <color name="colorPrimary">#990033</color>
+    <color name="colorPrimaryDark">#300010</color>
     <color name="colorAccent">#7C4DFF</color>
-    <color name="colorSwitchAlmostTransparent">#0Dfafafa</color>
-    <color name="colorSwitchTransparent">#00fafafa</color>
+    <color name="colorAccent2">#F3C969</color>
+    <color name="colorRewardText">#B9CFD4</color>
+    <color name="colorSwitchAlmostTransparent">#26fafafa</color>
+    <color name="colorSwitchTransparent">#1Afafafa</color>
 </resources>
