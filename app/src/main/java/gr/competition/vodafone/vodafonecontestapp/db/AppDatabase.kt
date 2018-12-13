@@ -60,9 +60,9 @@ abstract class AppDatabase : RoomDatabase() {
             gifts.add(Gift(7, "shopping", 3, "15% έκπτωση Adidas", ""))
             gifts.add(Gift(8, "shopping", 3, "15% έκπτωση Funky Buddha", ""))
             gifts.add(Gift(9, "shopping", 3, "15% έκπτωση Forever 21", ""))
-            gifts.add(Gift(10, "data", 4, "1+1 Skydive", ""))
-            gifts.add(Gift(11, "data", 4, "1+1 Skydive", ""))
-            gifts.add(Gift(12, "data", 4, "1+1 Skydive", ""))
+            gifts.add(Gift(10, "data", 4, "500 MB", ""))
+            gifts.add(Gift(11, "data", 4, "1 GB", ""))
+            gifts.add(Gift(12, "data", 4, "2 GB", ""))
             gifts.add(Gift(13, "trip", 5, "1+1 Μπαλί", ""))
             db.giftDao().insertGifts(gifts)
         }
