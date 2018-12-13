@@ -31,5 +31,5 @@ task clean(type: Delete) {
 
 ext {
     lifecycleVersion = '2.0.0'
-    roomVersion = '2.1.0-alpha02'
+    roomVersion = '2.1.0-alpha03'
 }
