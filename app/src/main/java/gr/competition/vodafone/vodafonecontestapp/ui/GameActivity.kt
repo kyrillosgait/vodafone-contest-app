@@ -1,8 +1,8 @@
 package gr.competition.vodafone.vodafonecontestapp.ui
 
+import android.content.SharedPreferences
 import android.graphics.Paint
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import gr.competition.vodafone.vodafonecontestapp.R
@@ -21,6 +21,7 @@ class GameActivity : AppCompatActivity() {
     private val youWon = "Κέρδισες"
     private var boxName = ""
     private var youLost = "Λυπάμαι αλλά δεν ήσουν τυχερός αυτή τη φορά"
+    var prefs: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +30,8 @@ class GameActivity : AppCompatActivity() {
 
         selectRandomGifts()
 
+        numberOfTriesTextView.text = String.format(getString(R.string.tries_left),getRetries())
+
         // Boxes onClickListeners
         firstBox.setOnClickListener { onBoxClicked(1) }
         secondBox.setOnClickListener { onBoxClicked(2) }
@@ -36,6 +39,8 @@ class GameActivity : AppCompatActivity() {
         fourthBox.setOnClickListener { onBoxClicked(4) }
         fifthBox.setOnClickListener { onBoxClicked(5) }
         sixthBox.setOnClickListener { onBoxClicked(6) }
+        giftAnimation.setOnClickListener { startActivity<HistoryActivity>("GIFT_NAME" to boxName) }
+        sadAnimation.setOnClickListener { finish() }
     }
 
     private fun selectRandomGifts() {
@@ -73,10 +78,11 @@ class GameActivity : AppCompatActivity() {
 
     private fun onBoxClicked(boxNumber: Int) {
 
+        disableBox(boxNumber)
+        boxes.remove(boxNumber)
+
         if (selectedBox == 0) {
             selectedBox = boxNumber
-            boxes.remove(boxNumber)
-            disableBox(boxNumber)
 
             for (box in boxes) {
                 changeBoxNumberTitleToQuestionMark(box)
@@ -86,14 +92,11 @@ class GameActivity : AppCompatActivity() {
 
         } else {
 
-            Log.d("BOXES", "BOXES" + boxes.toString())
-
-            if (boxes.size > 1) {
+            if (boxes.size > 0) {
 
                 for (box in boxesList) {
                     if (box.id == boxNumber) {
                         strikeThroughReward(box.name)
-                        disableBox(boxNumber)
                     }
                 }
 
@@ -102,20 +105,19 @@ class GameActivity : AppCompatActivity() {
                 for (box in boxesList) {
                     if (box.id == selectedBox) {
                         boxName = box.name
-                        disableBox(boxNumber)
                     }
                 }
 
+                updateRetries(getRetries() - 1)
+
                 if (boxName.isNotEmpty()) {
                     odigiesTextView.text = "$youWon $boxName"
-                    youWonButton.visibility = View.VISIBLE
-                    startActivity<HistoryActivity>("GIFT_NAME" to boxName)
+                    giftAnimation.visibility = View.VISIBLE
                 } else {
                     odigiesTextView.text = youLost
+                    sadAnimation.visibility = View.VISIBLE
                 }
             }
-
-            boxes.remove(boxNumber)
         }
     }
 
@@ -148,6 +150,21 @@ class GameActivity : AppCompatActivity() {
             5 -> fifthBox.isEnabled = false
             6 -> sixthBox.isEnabled = false
         }
+    }
+
+    private fun getRetries(): Int {
+        prefs = this.getSharedPreferences(packageName, 0);
+
+        return prefs!!.getInt(MainActivity.RETRIES_KEY, 0)
+
+    }
+
+    private fun updateRetries(newAmountOfRetries : Int){
+
+        val editor = prefs!!.edit()
+        editor.putInt(MainActivity.RETRIES_KEY, newAmountOfRetries)
+        editor.apply()
+        numberOfTriesTextView.text = String.format(getString(R.string.tries_left),getRetries())
     }
 
 }
