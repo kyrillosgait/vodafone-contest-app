@@ -97,65 +97,77 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/thirdRewardTextView" />
 
-        <com.google.android.material.button.MaterialButton
+        <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/firstBox"
-            android:layout_width="96dp"
-            android:layout_height="64dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
-            android:text="1"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/fourthRewardTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/fourthRewardTextView"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="false"
+            app:lottie_rawRes="@raw/box" />
 
-        <com.google.android.material.button.MaterialButton
+        <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/secondBox"
-            android:layout_width="96dp"
-            android:layout_height="64dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
-            android:text="2"
             app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/fourthRewardTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/fourthRewardTextView"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="false"
+            app:lottie_rawRes="@raw/box" />
 
-        <com.google.android.material.button.MaterialButton
+        <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/thirdBox"
-            android:layout_width="96dp"
-            android:layout_height="64dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
-            android:text="3"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/firstBox" />
+            app:layout_constraintTop_toBottomOf="@+id/firstBox"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="false"
+            app:lottie_rawRes="@raw/box" />
 
-        <com.google.android.material.button.MaterialButton
+        <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/fourthBox"
-            android:layout_width="96dp"
-            android:layout_height="64dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
-            android:text="4"
             app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/secondBox" />
+            app:layout_constraintTop_toBottomOf="@+id/secondBox"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="false"
+            app:lottie_rawRes="@raw/box" />
 
-        <com.google.android.material.button.MaterialButton
+        <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/fifthBox"
-            android:layout_width="96dp"
-            android:layout_height="64dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
-            android:text="5"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/thirdBox" />
+            app:layout_constraintTop_toBottomOf="@+id/thirdBox"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="false"
+            app:lottie_rawRes="@raw/box" />
 
-        <com.google.android.material.button.MaterialButton
+        <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/sixthBox"
-            android:layout_width="96dp"
-            android:layout_height="64dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
-            android:text="6"
             app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/fourthBox" />
+            app:layout_constraintTop_toBottomOf="@+id/fourthBox"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="false"
+            app:lottie_rawRes="@raw/box" />
 
         <TextView
             android:id="@+id/odigiesTextView"
