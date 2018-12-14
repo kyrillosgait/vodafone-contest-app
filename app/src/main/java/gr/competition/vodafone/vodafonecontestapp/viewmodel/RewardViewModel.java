@@ -2,6 +2,7 @@ package gr.competition.vodafone.vodafonecontestapp.viewmodel;
 
 import android.app.Application;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.util.List;
 
@@ -28,11 +29,12 @@ public class RewardViewModel extends AndroidViewModel {
 
     public LiveData<List<Reward>> getRewards() {
         if (returnedRewards == null) returnedRewards = new MutableLiveData<>();
-        return returnedRewards;
+        return rewardDao.loadAllRewards();
     }
 
     public void addReward(Reward newReward) {
         insertReward(newReward);
+
     /*    List<Reward> rewards = rewardDao.loadAllRewards();
         rewards.add(newReward);
         rewardsLiveData.setValue(rewards);
@@ -55,6 +57,12 @@ public class RewardViewModel extends AndroidViewModel {
         protected Void doInBackground(final Reward... params) {
             mAsyncTaskDao.insertReward(params[0]);
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Log.d("db", "Added to db");
         }
     }
 

@@ -44,8 +44,8 @@ public class HistoryActivity extends AppCompatActivity {
         RewardViewModel rewardViewModel = ViewModelProviders.of(this).get(RewardViewModel.class);
 
         if(intent!=null){
-            if (intent.hasExtra("GIFT_MAIN")){
-                String name = intent.getStringExtra("GIFT_MAIN");
+            if (intent.hasExtra("GIFT_NAME")){
+                String name = intent.getStringExtra("GIFT_NAME");
                 AppDatabase db = AppDatabase.Companion.getInstance(this);
                 Gift gift = db.giftDao().getGiftByName(name);
                 int id = getRandomId();
@@ -81,7 +81,10 @@ public class HistoryActivity extends AppCompatActivity {
     }
 
     private String createRandomString() {
-        return UUID.randomUUID().toString();
+        String uuid = UUID.randomUUID().toString();
+        uuid.replace("-", "");
+        uuid = uuid.substring(0, Math.min(uuid.length(), 16));
+        return uuid;
     }
 
     private int getRandomId() {
