@@ -30,7 +30,7 @@ class GameActivity : AppCompatActivity() {
 
         selectRandomGifts()
 
-        numberOfTriesTextView.text = String.format(getString(R.string.tries_left),getRetries())
+        numberOfTriesTextView.text = String.format(getString(R.string.tries_left), getRetries())
 
         // Boxes onClickListeners
         firstBox.setOnClickListener { onBoxClicked(1) }
@@ -78,46 +78,57 @@ class GameActivity : AppCompatActivity() {
 
     private fun onBoxClicked(boxNumber: Int) {
 
-        disableBox(boxNumber)
         boxes.remove(boxNumber)
 
         if (selectedBox == 0) {
             selectedBox = boxNumber
 
-            for (box in boxes) {
-                changeBoxNumberTitleToQuestionMark(box)
+            when (boxNumber) {
+                1-> firstBox.setBackgroundColor(resources.getColor(R.color.colorAccent2))
+                2 -> secondBox.setBackgroundColor(resources.getColor(R.color.colorAccent2))
+                3 -> thirdBox.setBackgroundColor(resources.getColor(R.color.colorAccent2))
+                4 -> fourthBox.setBackgroundColor(resources.getColor(R.color.colorAccent2))
+                5 -> fifthBox.setBackgroundColor(resources.getColor(R.color.colorAccent2))
+                6 -> sixthBox.setBackgroundColor(resources.getColor(R.color.colorAccent2))
             }
 
             odigiesTextView.text = "Πάτα στα κουτιά για να αποκαλύψεις τα δώρα που κρύβουν"
 
         } else {
 
-            if (boxes.size > 0) {
+            if (boxNumber != selectedBox) {
+                hideBox(boxNumber)
 
-                for (box in boxesList) {
-                    if (box.id == boxNumber) {
-                        strikeThroughReward(box.name)
+                if (boxes.size > 0) {
+
+                    for (box in boxesList) {
+                        if (box.id == boxNumber) {
+                            strikeThroughReward(box.name)
+                        }
                     }
-                }
 
-            } else {
-
-                for (box in boxesList) {
-                    if (box.id == selectedBox) {
-                        boxName = box.name
-                    }
-                }
-
-                updateRetries(getRetries() - 1)
-
-                if (boxName.isNotEmpty()) {
-                    odigiesTextView.text = "$youWon $boxName"
-                    giftAnimation.visibility = View.VISIBLE
                 } else {
-                    odigiesTextView.text = youLost
-                    sadAnimation.visibility = View.VISIBLE
+
+                    for (box in boxesList) {
+                        if (box.id == selectedBox) {
+                            boxName = box.name
+                        }
+                    }
+
+                    if (boxName.isNotEmpty()) {
+                        odigiesTextView.text = "$youWon $boxName"
+                        giftAnimation.visibility = View.VISIBLE
+                    } else {
+                        odigiesTextView.text = youLost
+                        sadAnimation.visibility = View.VISIBLE
+                    }
+
+                    if (getRetries() > 0) {
+                        updateRetries(getRetries() - 1)
+                    }
                 }
             }
+
         }
     }
 
@@ -130,41 +141,27 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
-    private fun changeBoxNumberTitleToQuestionMark(box: Int) {
-        when (box) {
-            1 -> firstBox.text = "?"
-            2 -> secondBox.text = "?"
-            3 -> thirdBox.text = "?"
-            4 -> fourthBox.text = "?"
-            5 -> fifthBox.text = "?"
-            6 -> sixthBox.text = "?"
-        }
-    }
-
-    private fun disableBox(boxNumber: Int) {
+    private fun hideBox(boxNumber: Int) {
         when (boxNumber) {
-            1 -> firstBox.isEnabled = false
-            2 -> secondBox.isEnabled = false
-            3 -> thirdBox.isEnabled = false
-            4 -> fourthBox.isEnabled = false
-            5 -> fifthBox.isEnabled = false
-            6 -> sixthBox.isEnabled = false
+            1 -> firstBox.visibility = View.INVISIBLE
+            2 -> secondBox.visibility = View.INVISIBLE
+            3 -> thirdBox.visibility = View.INVISIBLE
+            4 -> fourthBox.visibility = View.INVISIBLE
+            5 -> fifthBox.visibility = View.INVISIBLE
+            6 -> sixthBox.visibility = View.INVISIBLE
         }
     }
 
     private fun getRetries(): Int {
         prefs = this.getSharedPreferences(packageName, 0);
-
         return prefs!!.getInt(MainActivity.RETRIES_KEY, 0)
-
     }
 
-    private fun updateRetries(newAmountOfRetries : Int){
-
-        val editor = prefs!!.edit()
-        editor.putInt(MainActivity.RETRIES_KEY, newAmountOfRetries)
-        editor.apply()
-        numberOfTriesTextView.text = String.format(getString(R.string.tries_left),getRetries())
+    private fun updateRetries(newAmountOfRetries: Int) {
+        val editor = prefs?.edit()
+        editor?.putInt(MainActivity.RETRIES_KEY, newAmountOfRetries)
+        editor?.apply()
+        numberOfTriesTextView.text = String.format(getString(R.string.tries_left), getRetries())
     }
 
 }

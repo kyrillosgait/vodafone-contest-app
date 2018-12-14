@@ -1,6 +1,7 @@
 package gr.competition.vodafone.vodafonecontestapp.ui;
 
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.card.MaterialCardView;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
@@ -74,6 +78,7 @@ public class HistoryAdapter extends ListAdapter<Reward, HistoryAdapter.RewardsVi
         TextView mTitle;
         @BindView(R.id.mcv_history_item)
         MaterialCardView mItem;
+        private final DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
         public RewardsViewHolder(View itemView) {
             super(itemView);
@@ -84,11 +89,34 @@ public class HistoryAdapter extends ListAdapter<Reward, HistoryAdapter.RewardsVi
 
         public void bind(Reward reward, int position) {
             mReward = reward;
-//todo(when we have icons): setIcon(mReward.getGift().getCategory());
-            mDate.setText(mReward.getRedeemUntil().toString());
+            setIcon(mReward.getGift().getCategory());
+            mDate.setText(dateFormat.format(mReward.getRedeemUntil()));
             mRewardCode.setText(mReward.getRedeemCode());
             mTitle.setText(mReward.getGift().getName());
             setBackgroundColor(position);
+        }
+
+        private void setIcon(String category) {
+            Drawable drawable;
+            switch (category) {
+                case "fun":
+                    drawable = res.getDrawable(R.drawable.ic_ticket);
+                    break;
+                case "food":
+                    drawable = res.getDrawable(R.drawable.ic_food);
+                    break;
+                case "shopping":
+                    drawable = res.getDrawable(R.drawable.ic_sale);
+                    break;
+                case "data":
+                    drawable = res.getDrawable(R.drawable.ic_cloud);
+                    break;
+                default:
+                    drawable = res.getDrawable(R.drawable.ic_airplane_takeoff);
+                    break;
+            }
+            drawable.setTint(res.getColor(R.color.colorAccent2));
+            mIcon.setImageDrawable(drawable);
         }
 
         private void setBackgroundColor(int position) {

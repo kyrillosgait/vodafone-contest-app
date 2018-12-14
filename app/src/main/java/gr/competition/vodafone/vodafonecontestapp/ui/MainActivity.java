@@ -12,6 +12,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnLargeRecharge;
     @BindView(R.id.cordlayout_main)
     CoordinatorLayout coordinatorLayout;
+    @BindView(R.id.mainAnimation)
+    LottieAnimationView lottieAnimationView;
     private SharedPreferences prefs;
     public static final String RETRIES_KEY = "com.example.app.retries";
     private Animation slide_down;
@@ -79,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), HistoryActivity.class);
             startActivity(intent);
         });
+
+        lottieAnimationView.setOnClickListener(v -> lottieAnimationView.playAnimation());
 
         btnAbout.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(),AboutActivity.class);
