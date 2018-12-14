@@ -1,10 +1,14 @@
 package gr.competition.vodafone.vodafonecontestapp.ui;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
@@ -22,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnAbout;
     @BindView(R.id.btn_rewards)
     Button btnRewards;
-    private AppDatabase db;
+    @BindView(R.id.ll_recharge_layout)
+    LinearLayout rechargeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +35,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        db = AppDatabase.Companion.getInstance(this);
+        AppDatabase db = AppDatabase.Companion.getInstance(this);
+        int retriesAmount = getTries();
+        Log.d("retries", String.valueOf(retriesAmount));
+
 
         btnPlay.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), GameActivity.class);
-            startActivity(intent);
+
+            if(retriesAmount==0){
+                rechargeLayout.setVisibility(View.VISIBLE);
+            }else {
+                rechargeLayout.setVisibility(View.GONE);
+                Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                startActivity(intent);
+            }
         });
 
         btnHistory.setOnClickListener(v -> {
@@ -52,10 +66,18 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        getTries();
     }
 
-    private void getTries() {
+    private int getTries() {
+
+        SharedPreferences prefs = this.getSharedPreferences(
+                getPackageName(), Context.MODE_PRIVATE);
+
+
+        String retriesKey = "com.example.app.retries";
+
+        // use a default value when retries is empty
+        return prefs.getInt(retriesKey, 0);
 
     }
 }
