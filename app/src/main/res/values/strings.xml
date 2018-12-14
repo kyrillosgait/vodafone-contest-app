@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">VodafoneContestApp</string>
     <string name="title_activity_history">Τα δώρα μου</string>
+    <string name="recharge_text">Success! You have %d new tries!</string>
 </resources>
