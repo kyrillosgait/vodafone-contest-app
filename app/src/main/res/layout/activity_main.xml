@@ -94,6 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="Κάνε ανανέωση"
+                android:textColor="@android:color/white"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
             <LinearLayout
