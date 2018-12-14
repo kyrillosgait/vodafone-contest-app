@@ -15,4 +15,8 @@ interface GiftDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertGifts(gifts: List<Gift>)
 
+    @Query("SELECT * FROM Gift WHERE name = :name")
+    fun getGiftByName(name: String): Gift
+
+
 }

@@ -7,7 +7,7 @@ import java.util.*
 
 @Entity
 data class Reward(
-        @PrimaryKey(autoGenerate = true) val id: Int,
+        @PrimaryKey val id: Int?,
         @Embedded val gift: Gift,
         var redeemCode: String,
         var redeemUntil: Date
