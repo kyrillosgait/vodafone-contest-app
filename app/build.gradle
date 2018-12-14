@@ -19,7 +19,6 @@ android {
         targetCompatibility 1.8
     }
 
-
     buildTypes {
         release {
             minifyEnabled false
@@ -51,6 +50,9 @@ dependencies {
     // Room
     implementation "androidx.room:room-runtime:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
+
+    // Lottie
+    implementation 'com.airbnb.android:lottie:2.8.0'
 
     // RecyclerView
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
