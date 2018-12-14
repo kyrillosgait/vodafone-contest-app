@@ -55,7 +55,7 @@
             android:paddingBottom="8dp"
             android:text="C8D4Fhsj23J"
             android:textSize="20sp"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorAccent2"
             card_view:layout_constraintBottom_toTopOf="@id/tv_history_date_valid"
             card_view:layout_constraintLeft_toLeftOf="@id/guideline"
             card_view:layout_constraintTop_toBottomOf="@id/tv_history_reward_title" />
