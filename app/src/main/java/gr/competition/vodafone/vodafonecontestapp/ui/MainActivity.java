@@ -51,5 +51,11 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), RewardsActivity.class);
             startActivity(intent);
         });
+
+        getTries();
+    }
+
+    private void getTries() {
+
     }
 }
