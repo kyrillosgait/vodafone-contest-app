@@ -1,5 +1,6 @@
 package gr.competition.vodafone.vodafonecontestapp.ui
 
+import android.content.SharedPreferences
 import android.graphics.Paint
 import android.os.Bundle
 import android.util.Log
@@ -21,6 +22,7 @@ class GameActivity : AppCompatActivity() {
     private val youWon = "Κέρδισες"
     private var boxName = ""
     private var youLost = "Λυπάμαι αλλά δεν ήσουν τυχερός αυτή τη φορά"
+    var prefs: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +30,8 @@ class GameActivity : AppCompatActivity() {
         giftDao = AppDatabase.getInstance(this).giftDao()
 
         selectRandomGifts()
+
+        numberOfTriesTextView.setText(String.format(getString(R.string.tries_left),getRetries()))
 
         // Boxes onClickListeners
         firstBox.setOnClickListener { onBoxClicked(1) }
@@ -106,6 +110,8 @@ class GameActivity : AppCompatActivity() {
                     }
                 }
 
+                updateRetries(getRetries() - 1)
+
                 if (boxName.isNotEmpty()) {
                     odigiesTextView.text = "$youWon $boxName"
                     youWonButton.visibility = View.VISIBLE
@@ -148,6 +154,20 @@ class GameActivity : AppCompatActivity() {
             5 -> fifthBox.isEnabled = false
             6 -> sixthBox.isEnabled = false
         }
+    }
+
+    private fun getRetries(): Int {
+        prefs = this.getSharedPreferences(packageName, 0);
+
+        return prefs!!.getInt(MainActivity.RETRIES_KEY, 0)
+
+    }
+
+    private fun updateRetries(newAmountofRetries : Int){
+
+        val editor = prefs!!.edit()
+        editor.putInt(MainActivity.RETRIES_KEY, newAmountofRetries)
+        editor.apply()
     }
 
 }

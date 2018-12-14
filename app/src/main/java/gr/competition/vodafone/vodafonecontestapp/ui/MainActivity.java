@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -41,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     CoordinatorLayout coordinatorLayout;
     private SharedPreferences prefs;
     public static final String RETRIES_KEY = "com.example.app.retries";
+    private Animation slide_down;
+    private Animation slide_up;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,12 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         AppDatabase db = AppDatabase.Companion.getInstance(this);
+        //Load animation
+        slide_down = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.slide_down);
+
+        slide_up = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.slide_up);
 
         btnPlay.setOnClickListener(v -> {
 
@@ -56,8 +66,10 @@ public class MainActivity extends AppCompatActivity {
 
             if(retriesAmount==0){
                 rechargeLayout.setVisibility(View.VISIBLE);
+                rechargeLayout.setAnimation(slide_down);
             }else {
                 rechargeLayout.setVisibility(View.GONE);
+                rechargeLayout.setAnimation(slide_up);
                 Intent intent = new Intent(getApplicationContext(), GameActivity.class);
                 startActivity(intent);
             }
@@ -102,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
     private void success(int newRetriesAmount) {
 
         rechargeLayout.setVisibility(View.GONE);
+        rechargeLayout.setAnimation(slide_up);
         Snackbar.make(coordinatorLayout,
                 String.format(getString(R.string.recharge_text),newRetriesAmount),
                 Snackbar.LENGTH_LONG).show();

@@ -9,17 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.MainActivity"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.GameActivity" />
-        <activity android:name=".ui.HistoryActivity" />
-        <activity android:name=".ui.RewardsActivity" />
-        <activity android:name=".ui.AboutActivity"></activity>
+        <activity android:name=".ui.GameActivity"
+            android:parentActivityName=".ui.MainActivity"
+            />
+        <activity android:name=".ui.HistoryActivity"
+            android:parentActivityName=".ui.MainActivity"
+            />
+        <activity android:name=".ui.RewardsActivity"
+            android:parentActivityName=".ui.MainActivity"
+            />
+        <activity android:name=".ui.AboutActivity"
+            android:parentActivityName=".ui.MainActivity"
+            />
     </application>
 
 </manifest>
